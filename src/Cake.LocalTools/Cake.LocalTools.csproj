@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Common" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="cake-contrib-module-medium.png" />
+    <None Include="cake-contrib-module-medium.png" Pack="true" PackagePath="/" />
+  </ItemGroup>
+    
+  <PropertyGroup>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/module/cake-contrib-module-medium.png</PackageIconUrl>
+    <PackageIcon>cake-contrib-module-medium.png</PackageIcon>
+  </PropertyGroup>
+	
+</Project>
