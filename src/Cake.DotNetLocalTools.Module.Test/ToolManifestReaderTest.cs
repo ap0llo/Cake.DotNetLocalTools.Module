@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using Xunit;
 using Path = System.IO.Path;
 
-namespace Cake.LocalTools.Module.Test
+namespace Cake.DotNetLocalTools.Module.Test
 {
     /// <summary>
     /// Tests for <see cref="ToolManifestReader"/>

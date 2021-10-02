@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     internal class ToolManifest
     {

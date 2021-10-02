@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     public sealed class InvalidToolManifestException : Exception
     {

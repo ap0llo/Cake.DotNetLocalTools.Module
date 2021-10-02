@@ -1,7 +1,7 @@
 ﻿using System;
 using Cake.Frosting;
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     public static class CakeHostExtensions
     {

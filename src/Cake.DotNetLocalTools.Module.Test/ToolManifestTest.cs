@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Xunit;
 
-namespace Cake.LocalTools.Module.Test
+namespace Cake.DotNetLocalTools.Module.Test
 {
     /// <summary>
     /// Tests for <see cref="ToolManifest"/>

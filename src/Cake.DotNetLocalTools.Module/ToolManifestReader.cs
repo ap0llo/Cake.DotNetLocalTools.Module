@@ -5,7 +5,7 @@ using Cake.Core;
 using Cake.Core.IO;
 using Newtonsoft.Json;
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     /// <summary>
     /// Default implementation of <see cref="IToolManifestReader"/>

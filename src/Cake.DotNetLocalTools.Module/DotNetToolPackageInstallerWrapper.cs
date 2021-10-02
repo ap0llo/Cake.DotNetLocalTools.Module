@@ -6,7 +6,7 @@ using Cake.Core.IO;
 using Cake.Core.Packaging;
 using Cake.DotNetTool.Module;
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     /// <summary>
     /// Adapter class to add the <see cref="IDotNetToolPackageInstaller"/> interface to <see cref="DotNetToolPackageInstaller"/>.

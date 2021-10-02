@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E453CA95-C36A-4BB5-B8B9-D8251468FE03}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.LocalTools.Module", "src\Cake.LocalTools.Module\Cake.LocalTools.Module.csproj", "{7F15995D-F55C-4A4D-87BD-B08B67A99B6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.DotNetLocalTools.Module", "src\Cake.DotNetLocalTools.Module\Cake.DotNetLocalTools.Module.csproj", "{7F15995D-F55C-4A4D-87BD-B08B67A99B6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.LocalTools.Module.Test", "src\Cake.LocalTools.Module.Test\Cake.LocalTools.Module.Test.csproj", "{CFDD2A3C-6510-4786-A305-1E76704196E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.DotNetLocalTools.Module.Test", "src\Cake.DotNetLocalTools.Module.Test\Cake.DotNetLocalTools.Module.Test.csproj", "{CFDD2A3C-6510-4786-A305-1E76704196E9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CDD85799-CFBE-45F1-B90C-4980249F9A64}"
 	ProjectSection(SolutionItems) = preProject

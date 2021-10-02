@@ -2,7 +2,7 @@
 using System.IO;
 using Cake.Core.IO;
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     internal interface IToolManifestReader
     {

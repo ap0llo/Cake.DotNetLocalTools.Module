@@ -3,9 +3,9 @@ using Cake.Core.Annotations;
 using Cake.Core.Composition;
 using Cake.Core.Packaging;
 
-[assembly: CakeModule(typeof(Cake.LocalTools.Module.LocalToolsModule))]
+[assembly: CakeModule(typeof(Cake.DotNetLocalTools.Module.LocalToolsModule))]
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     public class LocalToolsModule : ICakeModule
     {

@@ -2,7 +2,7 @@
 using CliWrap;
 using Xunit.Abstractions;
 
-namespace Cake.LocalTools.Module.Test
+namespace Cake.DotNetLocalTools.Module.Test
 {
     internal static class CommandExtensions
     {

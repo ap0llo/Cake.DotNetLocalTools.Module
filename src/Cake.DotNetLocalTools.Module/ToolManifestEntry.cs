@@ -1,7 +1,7 @@
 ﻿using System;
 using Cake.Core.Packaging;
 
-namespace Cake.LocalTools.Module
+namespace Cake.DotNetLocalTools.Module
 {
     internal sealed class ToolManifestEntry : IEquatable<ToolManifestEntry>
     {

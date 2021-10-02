@@ -33,7 +33,7 @@
 	<!--NuGet package properties -->
 	<PropertyGroup>
 		<Authors>Andreas Gruenwald</Authors>
-		<PackageProjectUrl>https://github.com/ap0llo/Cake.LocalTools.Module</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/ap0llo/Cake.DotNetLocalTools.Module</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>Cake Addin to ease interaction with .NET Local Tools</Description>
 		<Copyright>Copyright (c) 2021, Andreas Gruenwald</Copyright>
