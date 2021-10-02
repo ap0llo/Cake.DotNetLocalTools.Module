@@ -7,6 +7,7 @@
   </PropertyGroup>
     
   <ItemGroup>
+    <PackageReference Include="Cake.BuildSystems.Module" Version="3.0.3" />
     <PackageReference Include="Cake.Frosting" Version="1.2.0" />
     <PackageReference Include="Cake.GitVersioning" Version="3.5.37-alpha" />
   </ItemGroup>
