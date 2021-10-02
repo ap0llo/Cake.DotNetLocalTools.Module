@@ -8,6 +8,7 @@
     <PackageReference Include="Cake.Core" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Cake.Common" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Cake.DotNetTool.Module" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Frosting" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
