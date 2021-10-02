@@ -3,7 +3,7 @@ using Cake.Core.IO;
 using Cake.Core.Packaging;
 using Cake.DotNetTool.Module;
 
-namespace Cake.LocalTools
+namespace Cake.LocalTools.Module
 {
     /// <summary>
     /// Interface for <see cref="DotNetToolPackageInstaller" />.

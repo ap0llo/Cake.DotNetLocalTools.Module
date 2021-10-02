@@ -2,11 +2,10 @@
 using Cake.Core.Annotations;
 using Cake.Core.Composition;
 using Cake.Core.Packaging;
-using Cake.LocalTools;
 
-[assembly: CakeModule(typeof(LocalToolsModule))]
+[assembly: CakeModule(typeof(Cake.LocalTools.Module.LocalToolsModule))]
 
-namespace Cake.LocalTools
+namespace Cake.LocalTools.Module
 {
     public class LocalToolsModule : ICakeModule
     {

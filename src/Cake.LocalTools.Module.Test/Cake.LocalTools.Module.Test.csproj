@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cake.LocalTools\Cake.LocalTools.csproj" />
+    <ProjectReference Include="..\Cake.LocalTools.Module\Cake.LocalTools.Module.csproj" />
   </ItemGroup>
 
 </Project>

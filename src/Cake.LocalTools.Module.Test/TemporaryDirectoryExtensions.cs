@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Grynwald.Utilities.IO;
 
-namespace Cake.LocalTools.Test
+namespace Cake.LocalTools.Module.Test
 {
     internal static class TemporaryDirectoryExtensions
     {

@@ -7,7 +7,7 @@ using Cake.Core.Packaging;
 using Moq;
 using Xunit;
 
-namespace Cake.LocalTools.Test
+namespace Cake.LocalTools.Module.Test
 {
     /// <summary>
     /// Tests for <see cref="ToolManifestPackageInstaller"/>

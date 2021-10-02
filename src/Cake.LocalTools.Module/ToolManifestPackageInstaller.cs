@@ -6,7 +6,7 @@ using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Packaging;
 
-namespace Cake.LocalTools
+namespace Cake.LocalTools.Module
 {
     /// <summary>
     /// Package installer for .NET Local Tool Manifests

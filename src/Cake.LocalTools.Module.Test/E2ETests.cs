@@ -6,7 +6,7 @@ using Grynwald.Utilities.IO;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Cake.LocalTools.Test
+namespace Cake.LocalTools.Module.Test
 {
     public class E2ETests
     {
@@ -53,7 +53,7 @@ namespace Cake.LocalTools.Test
                 @"
                     using Cake.Core;
                     using Cake.Frosting;
-                    using Cake.LocalTools;
+                    using Cake.LocalTools.Module;
 
                     return new CakeHost()
                         .UseModule<LocalToolsModule>()
