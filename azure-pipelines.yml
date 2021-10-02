@@ -1,0 +1,13 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+- task: PowerShell@2
+  inputs:
+    filePath: './build.ps1'
+    arguments: '--target CI --configuration $(buildConfiguration)'
