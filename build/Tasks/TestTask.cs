@@ -17,11 +17,7 @@ namespace Build.Tasks
     {
         public override void Run(BuildContext context)
         {
-            if (context.DirectoryExists(context.TestResultsPath))
-            {
-                context.Log.Information($"Cleaning test results directory '{context.TestResultsPath}'");
-                context.DeleteDirectory(context.TestResultsPath, new() { Force = true, Recursive = true });
-            }
+            context.CleanDirectory(context.TestResultsPath);
 
             RunTests(context);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Cake.Common;
+using Cake.Common.Build;
 using Cake.Common.Tools.DotNetCore.MSBuild;
 using Cake.Core;
 using Cake.Core.IO;
@@ -68,6 +69,13 @@ namespace Build
         /// </summary>
         public bool DeterministicBuild { get; }
 
+        public string CINuGetFeedUrl => "https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/Cake.DotNetLocalTools.Module/nuget/v3/index.json";
+
+        public string GitBranchName { get; }
+
+        public bool IsMasterBranch => GitBranchName.Equals("master", StringComparison.OrdinalIgnoreCase);
+
+        public bool IsReleaseBranch => GitBranchName.StartsWith("release/", StringComparison.OrdinalIgnoreCase);
 
 
         public BuildContext(ICakeContext context) : base(context)
@@ -82,7 +90,10 @@ namespace Build
 
             PackageOutputPath = BinariesDirectory.Combine(BuildConfiguration).Combine("packages");
             TestResultsPath = BinariesDirectory.Combine(BuildConfiguration).Combine("TestResults");
+
+            GitBranchName = GetGitBranchName();
         }
+
 
 
         public DotNetCoreMSBuildSettings GetDefaultMSBuildSettings() => new()
@@ -90,5 +101,27 @@ namespace Build
             TreatAllWarningsAs = MSBuildTreatAllWarningsAs.Error
         };
 
+
+        private string GetGitBranchName()
+        {
+            string branchName;
+            if (this.IsRunningOnAzurePipelines())
+            {
+                branchName = this.AzurePipelines().Environment.Repository.SourceBranch;
+            }
+
+            else
+            {
+                var gitContext = Nerdbank.GitVersioning.GitContext.Create(RootDirectory.FullPath);
+                branchName = gitContext.HeadCanonicalName!;
+            }
+
+            if (branchName.StartsWith("refs/heads/"))
+            {
+                branchName = branchName.Substring("refs/heads/".Length);
+            }
+
+            return branchName;
+        }
     }
 }

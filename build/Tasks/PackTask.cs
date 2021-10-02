@@ -13,11 +13,15 @@ namespace Build.Tasks
     {
         public override void Run(BuildContext context)
         {
-            context.Log.Information("Packing NuGet Packages");
+            //
+            // Clean output directory
+            //
+            context.CleanDirectory(context.PackageOutputPath);
 
             // 
             // Pack NuGet packages
             // 
+            context.Log.Information("Packing NuGet Packages");
             var packSettings = new DotNetCorePackSettings()
             {
                 Configuration = context.BuildConfiguration,

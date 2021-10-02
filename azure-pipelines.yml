@@ -1,10 +1,9 @@
 trigger:
-- master
-
+  - master
+  - release/*
 
 variables:
   buildConfiguration: 'Release'
-
 
 jobs:
 - job: Build
@@ -18,3 +17,5 @@ jobs:
     inputs:
       filePath: './build.ps1'
       arguments: '--target CI --configuration $(buildConfiguration)'
+    env:
+     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
