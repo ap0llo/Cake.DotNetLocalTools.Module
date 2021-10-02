@@ -19,3 +19,4 @@ jobs:
       arguments: '--target CI --configuration $(buildConfiguration)'
     env:
      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+     GITHUB_ACCESSTOKEN: $(GitHub.AccessToken)

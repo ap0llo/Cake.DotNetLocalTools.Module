@@ -8,6 +8,7 @@ using Cake.Frosting;
 
 namespace Build
 {
+    //TODO: Clean up
     public class BuildContext : FrostingContext
     {
         public class ArtifactNameSettings
@@ -21,6 +22,8 @@ namespace Build
             /// The Azure Pipelines artifact name under which to save test result files
             /// </summary>
             public string TestResults => "TestResults";
+
+            public string ChangeLog => "TestResults";
         }
 
         /// <summary>
@@ -77,19 +80,22 @@ namespace Build
 
         public bool IsReleaseBranch => GitBranchName.StartsWith("release/", StringComparison.OrdinalIgnoreCase);
 
+        public FilePath ChangeLogOutputPath { get; }
+
 
         public BuildContext(ICakeContext context) : base(context)
         {
+            BuildConfiguration = context.Argument("configuration", "Release");
+            DeterministicBuild = context.Argument("deterministic", IsRunningInCI);
+
             RootDirectory = context.Environment.WorkingDirectory;
 
             var binariesDirectory = context.EnvironmentVariable("BUILD_BINARIESDIRECTORY");
             BinariesDirectory = String.IsNullOrEmpty(binariesDirectory) ? RootDirectory.Combine("Binaries") : binariesDirectory;
 
-            BuildConfiguration = context.Argument("configuration", "Release");
-            DeterministicBuild = context.Argument("deterministic", IsRunningInCI);
-
             PackageOutputPath = BinariesDirectory.Combine(BuildConfiguration).Combine("packages");
             TestResultsPath = BinariesDirectory.Combine(BuildConfiguration).Combine("TestResults");
+            ChangeLogOutputPath = BinariesDirectory.CombineWithFilePath("changelog.md");
 
             GitBranchName = GetGitBranchName();
         }

@@ -8,6 +8,7 @@ namespace Build.Tasks
     [IsDependentOn(typeof(BuildTask))]
     [IsDependentOn(typeof(TestTask))]
     [IsDependentOn(typeof(PackTask))]
+    [IsDependentOn(typeof(GenerateChangeLogTask))]
     [IsDependentOn(typeof(PushTask))]
     public class CITask : FrostingTask
     { }
