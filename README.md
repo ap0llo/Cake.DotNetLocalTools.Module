@@ -1,7 +1,10 @@
 # Cake.DotNetLocalTools.Module
 
+[![NuGet](https://img.shields.io/nuget/v/Cake.DotNetLocalTools.Module.svg?logo=nuget)](https://www.nuget.org/packages/Cake.DotNetLocalTools.Module)
+[![Azure Artifacts](https://img.shields.io/badge/Azure%20Artifacts-prerelease-yellow.svg?logo=azuredevops)](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=Cake.DotNetLocalTools.Module)
+
 [![Build Status](https://dev.azure.com/ap0llo/OSS/_apis/build/status/Cake.DotNetLocalTools.Module?branchName=master)](https://dev.azure.com/ap0llo/OSS/_build/latest?definitionId=21&branchName=master)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
 
 A [Cake](https://cakebuild.net/) Module that extends cake with functionality to install tools from a .NET tool manifest.
 
@@ -16,9 +19,10 @@ Local tools are listed in a "tool manifest" (`dotnet-tools.json`) and run throug
 It reads a list of tools from one or more tool manifests and install's them through Cake's tool infrastructure.
 This way, you can easily use the tools from Cake while still having the tools and their versions described in a common format.
 
+
 ## Usage
 
-## Cake Script
+### Cake Script
 
 To use the module in a Cake script file, perform the following steps
 
@@ -102,7 +106,57 @@ To use the module in a [Cake.Frosting](https://cakebuild.net/docs/running-builds
     }
     ```
 
-### Building from source
+## Example
+
+Installing tools from a tool manifest is equivalent to installing the tools listed in the manifest using a `#tool` preprocessor directive or through `InstallTool()`.
+
+For example, a tool manifest at `.config/dotnet-tools.json` could look like this:
+
+```json
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "nbgv": {
+      "version": "3.4.231",
+      "commands": [
+        "nbgv"
+      ]
+    },
+    "dotnet-format": {
+      "version": "5.1.225507",
+      "commands": [
+        "dotnet-format"
+      ]
+    },
+    "dotnet-reportgenerator-globaltool": {
+      "version": "4.8.12",
+      "commands": [
+        "reportgenerator"
+      ]
+    }
+  }
+}
+```
+
+Tools from the manifest can be installed using 
+
+```cs
+#tool "toolmanifest:?package=.config/dotnet-tools.json"
+```
+
+This is equivalent to installing each tool individually:
+
+
+```cs
+#tool "dotnet:?package=nbgv&version=3.4.231"
+#tool "dotnet:?package=dotnet-format&version=5.1.225507"
+#tool "dotnet:?package=dotnet-reportgenerator-globaltool&version=4.8.12"
+```
+
+
+
+## Building from source
 
 Building the project from source requires the .NET 5 SDK (version 5.0.400 as specified in [global.json](./global.json)).
 
