@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		3rdPartyNotices.txt = 3rdPartyNotices.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "build\Build.csproj", "{6A7C6286-9BE1-4CF8-BBF7-EB4DFAB48B87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{8C54811F-4DEA-4021-9EDF-BB579129B97C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,8 @@ Global
 		{CFDD2A3C-6510-4786-A305-1E76704196E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFDD2A3C-6510-4786-A305-1E76704196E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFDD2A3C-6510-4786-A305-1E76704196E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7C6286-9BE1-4CF8-BBF7-EB4DFAB48B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7C6286-9BE1-4CF8-BBF7-EB4DFAB48B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7F15995D-F55C-4A4D-87BD-B08B67A99B6A} = {E453CA95-C36A-4BB5-B8B9-D8251468FE03}
 		{CFDD2A3C-6510-4786-A305-1E76704196E9} = {E453CA95-C36A-4BB5-B8B9-D8251468FE03}
+		{6A7C6286-9BE1-4CF8-BBF7-EB4DFAB48B87} = {8C54811F-4DEA-4021-9EDF-BB579129B97C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {551F3808-5BE6-4CF4-A80E-489DCCD2C9BF}
