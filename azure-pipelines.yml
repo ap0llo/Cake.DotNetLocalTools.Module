@@ -14,6 +14,7 @@ jobs:
 
   steps:
   - task: PowerShell@2
+    displayName: Cake Build
     inputs:
       filePath: './build.ps1'
       arguments: '--target CI --configuration $(buildConfiguration)'
