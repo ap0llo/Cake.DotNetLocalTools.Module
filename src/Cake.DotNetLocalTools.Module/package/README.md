@@ -1,16 +1,10 @@
-# Cake.DotNetLocalTools.Module
-
-[![NuGet](https://img.shields.io/nuget/v/Cake.DotNetLocalTools.Module.svg?logo=nuget)](https://www.nuget.org/packages/Cake.DotNetLocalTools.Module)
-[![Azure Artifacts](https://img.shields.io/badge/Azure%20Artifacts-prerelease-yellow.svg?logo=azuredevops)](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=Cake.DotNetLocalTools.Module)
-
-[![Build Status](https://dev.azure.com/ap0llo/OSS/_apis/build/status/Cake.DotNetLocalTools.Module?branchName=master)](https://dev.azure.com/ap0llo/OSS/_build/latest?definitionId=21&branchName=master)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
+﻿# Cake.DotNetLocalTools.Module
 
 A [Cake](https://cakebuild.net/) Module that extends Cake with functionality to install tools from a .NET tool manifest.
 
 ## Overview
 
-Cake allows installing [.NET CLI Tools](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) through the `#tool` preprocessor directies and Cake.Frosting's `InstallTool` method (see [Installing and using tools](https://cakebuild.net/docs/writing-builds/tools/installing-tools) for details)-
+Cake allows installing [.NET CLI Tools](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) through the `#tool` preprocessor directies and Cake.Frosting's `InstallTool` method (see [Installing and using tools](https://cakebuild.net/docs/writing-builds/tools/installing-tools) for details).
 
 .NET Core 3.1 introduced the concept of ["local tools"](https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use). 
 Local tools are listed in a "tool manifest" (`dotnet-tools.json`) and run through the `dotnet` command.
@@ -146,47 +140,8 @@ Tools from the manifest can be installed using
 
 This is equivalent to installing each tool individually:
 
-
 ```cs
 #tool "dotnet:?package=nbgv&version=3.4.231"
 #tool "dotnet:?package=dotnet-format&version=5.1.225507"
 #tool "dotnet:?package=dotnet-reportgenerator-globaltool&version=4.8.12"
-```
-
-
-## Building from source
-
-Building the project from source requires the .NET 5 SDK (version 5.0.400 as specified in [global.json](./global.json)).
-
-To build the project, run 
-
-```ps1
-.\build.ps1
-```
-
-This will 
-
-- Download the required version of the .NET SDK
-- Build the project
-- Run all tests 
-- Pack the NuGet package.
-
-
-### Versioning and Branching
-
-The version of the library is automatically derived from git and the information
-in `version.json` using [Nerdbank.GitVersioning](https://github.com/AArnott/Nerdbank.GitVersioning):
-
-- The master branch  always contains the latest version. Packages produced from
-  master are always marked as pre-release versions (using the `-pre` suffix).
-- Stable versions are built from release branches. Build from release branches
-  will have no `-pre` suffix
-- Builds from any other branch will have both the `-pre` prerelease tag and the git
-  commit hash included in the version string
-
-To create a new release branch use the [`nbgv` tool](https://www.nuget.org/packages/nbgv/):
-
-```ps1
-dotnet tool install --global nbgv
-nbgv prepare-release
 ```

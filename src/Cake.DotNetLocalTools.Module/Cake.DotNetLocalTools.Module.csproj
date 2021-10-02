@@ -13,13 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="cake-contrib-module-medium.png" />
-    <None Include="cake-contrib-module-medium.png" Pack="true" PackagePath="/" />
+    <None Remove="package/*" />
+    <None Include="package/*" Pack="true" PackagePath="/" />
   </ItemGroup>
     
   <PropertyGroup>
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/module/cake-contrib-module-medium.png</PackageIconUrl>
     <PackageIcon>cake-contrib-module-medium.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 	
 </Project>
