@@ -136,6 +136,6 @@ This is equivalent to installing each tool individually:
 
 ## License
 
-Cake.GitHubReleases is licensed under the MIT License.
+Cake.DotNetLocalTools.Module is licensed under the MIT License.
 
 For details see https://github.com/ap0llo/Cake.DotNetLocalTools.Module/blob/master/LICENSE
