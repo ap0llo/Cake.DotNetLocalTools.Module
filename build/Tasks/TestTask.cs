@@ -17,7 +17,7 @@ namespace Build.Tasks
     {
         public override void Run(BuildContext context)
         {
-            context.CleanDirectory(context.TestResultsPath);
+            context.EnsureDirectoryDoesNotExist(context.Output.TestResultsDirectory);
 
             RunTests(context);
         }
@@ -41,11 +41,11 @@ namespace Build.Tasks
             //
             var testSettings = new DotNetCoreTestSettings()
             {
-                Configuration = context.BuildConfiguration,
+                Configuration = context.BuildSettings.Configuration,
                 NoBuild = true,
                 NoRestore = true,
                 Loggers = new[] { "trx" },
-                ResultsDirectory = context.TestResultsPath
+                ResultsDirectory = context.Output.TestResultsDirectory
             };
 
             context.DotNetCoreTest(context.SolutionPath.FullPath, testSettings);
@@ -58,12 +58,12 @@ namespace Build.Tasks
 
         private static void PublishTestResults(BuildContext context, bool failOnMissingTestResults)
         {
-            var testResults = context.FileSystem.GetFilePaths(context.TestResultsPath, "*.trx", SearchScope.Current);
+            var testResults = context.FileSystem.GetFilePaths(context.Output.TestResultsDirectory, "*.trx", SearchScope.Current);
 
             if (!testResults.Any() && failOnMissingTestResults)
-                throw new Exception($"No test results found in '{context.TestResultsPath}'");
+                throw new Exception($"No test results found in '{context.Output.TestResultsDirectory}'");
 
-            if (context.IsRunningOnAzurePipelines())
+            if (context.AzurePipelines.IsActive)
             {
                 context.Log.Information("Publishing Test Results to Azure Pipelines");
                 var azurePipelines = context.AzurePipelines();
@@ -71,7 +71,7 @@ namespace Build.Tasks
                 // Publish test results to Azure Pipelines test UI
                 azurePipelines.Commands.PublishTestResults(new()
                 {
-                    Configuration = context.BuildConfiguration,
+                    Configuration = context.BuildSettings.Configuration,
                     TestResultsFiles = testResults,
                     TestRunner = AzurePipelinesTestRunnerType.VSTest
                 });
@@ -83,7 +83,7 @@ namespace Build.Tasks
                     azurePipelines.Commands.UploadArtifact(
                         folderName: "",
                         file: testResult,
-                        context.ArtifactNames.TestResults
+                        context.AzurePipelines.ArtifactNames.TestResults
                     );
                 }
             }

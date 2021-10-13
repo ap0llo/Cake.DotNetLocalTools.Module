@@ -2,6 +2,17 @@
 
 A [Cake](https://cakebuild.net/) Module that extends Cake with functionality to install tools from a .NET tool manifest.
 
+You can read the latest documentation at https://github.com/ap0llo/Cake.DotNetLocalTools.Module
+
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Usage](#usage)
+- [Example](#example)
+- [License](#license)
+
+
 ## Overview
 
 Cake allows installing [.NET CLI Tools](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) through the `#tool` preprocessor directies and Cake.Frosting's `InstallTool` method (see [Installing and using tools](https://cakebuild.net/docs/writing-builds/tools/installing-tools) for details).
@@ -19,18 +30,6 @@ This way, you can easily use the tools from Cake while still having the tools an
 
 To use the module in a Cake script file, perform the following steps
 
-1. Add the [Azure Artifacts feed](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=Cake.DotNetLocalTools.Module) to your `nuget.config` (the module is not yet available on NuGet.org):
-
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <configuration>
-        <packageSources>
-        ...
-        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/Cake.DotNetLocalTools.Module/nuget/v3/index.json" />
-    </packageSources>
-    </configuration>
-    ```
-
 1. Add the preprocessor directive to install the module
 
     ```cs
@@ -46,17 +45,6 @@ To use the module in a Cake script file, perform the following steps
 ### Cake.Frosting
 
 To use the module in a [Cake.Frosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting) project, perform the following steps.
-
-1. Add the [Azure Artifacts feed](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=Cake.DotNetLocalTools.Module) to your `nuget.config` (the module is not yet available on NuGet.org):
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <configuration>
-    <packageSources>
-        ...
-        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/Cake.DotNetLocalTools.Module/nuget/v3/index.json" />
-    </packageSources>
-    </configuration>
-    ```
 
 1. Install the module package by adding a package reference to your project
 
@@ -145,3 +133,9 @@ This is equivalent to installing each tool individually:
 #tool "dotnet:?package=dotnet-format&version=5.1.225507"
 #tool "dotnet:?package=dotnet-reportgenerator-globaltool&version=4.8.12"
 ```
+
+## License
+
+Cake.GitHubReleases is licensed under the MIT License.
+
+For details see https://github.com/ap0llo/Cake.DotNetLocalTools.Module/blob/master/LICENSE

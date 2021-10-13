@@ -18,7 +18,7 @@ namespace Build.Tasks
             context.Log.Information("Restoring NuGet Packages");
             context.DotNetCoreRestore(context.SolutionPath.FullPath, new DotNetCoreRestoreSettings()
             {
-                MSBuildSettings = context.GetDefaultMSBuildSettings()
+                MSBuildSettings = context.BuildSettings.GetDefaultMSBuildSettings()
             });
 
             //
@@ -27,12 +27,12 @@ namespace Build.Tasks
             context.Log.Information($"Building {context.SolutionPath}");
             var buildSettings = new DotNetCoreBuildSettings()
             {
-                Configuration = context.BuildConfiguration,
+                Configuration = context.BuildSettings.Configuration,
                 NoRestore = true,
-                MSBuildSettings = context.GetDefaultMSBuildSettings()
+                MSBuildSettings = context.BuildSettings.GetDefaultMSBuildSettings()
             };
 
-            if (context.DeterministicBuild)
+            if (context.BuildSettings.Deterministic)
             {
                 context.Log.Information("Using deterministic build settings");
                 buildSettings.MSBuildSettings.WithProperty("ContinuousIntegrationBuild", "true");

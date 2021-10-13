@@ -1,4 +1,5 @@
 ﻿using Cake.Common.Build;
+using Cake.Common.IO;
 using Cake.Common.Tools.DotNetCore;
 using Cake.Common.Tools.DotNetCore.MSBuild;
 using Cake.Common.Tools.DotNetCore.Pack;
@@ -16,7 +17,7 @@ namespace Build.Tasks
             //
             // Clean output directory
             //
-            context.CleanDirectory(context.PackageOutputPath);
+            context.EnsureDirectoryDoesNotExist(context.Output.PackagesDirectory);
 
             // 
             // Pack NuGet packages
@@ -24,14 +25,14 @@ namespace Build.Tasks
             context.Log.Information("Packing NuGet Packages");
             var packSettings = new DotNetCorePackSettings()
             {
-                Configuration = context.BuildConfiguration,
-                OutputDirectory = context.PackageOutputPath,
+                Configuration = context.BuildSettings.Configuration,
+                OutputDirectory = context.Output.PackagesDirectory,
                 NoRestore = true,
                 NoBuild = true,
-                MSBuildSettings = context.GetDefaultMSBuildSettings()
+                MSBuildSettings = context.BuildSettings.GetDefaultMSBuildSettings()
             };
 
-            if (context.DeterministicBuild)
+            if (context.BuildSettings.Deterministic)
             {
                 context.Log.Information("Using deterministic build settings");
                 packSettings.MSBuildSettings.WithProperty("ContinuousIntegrationBuild", "true");
@@ -43,13 +44,13 @@ namespace Build.Tasks
             //
             // Publish Artifacts
             //
-            if (context.IsRunningOnAzurePipelines())
+            if (context.AzurePipelines.IsActive)
             {
                 context.Log.Information("Publishing NuGet packages to Azure Pipelines");
-                foreach (var file in context.FileSystem.GetFilePaths(context.PackageOutputPath, "*.nupkg"))
+                foreach (var file in context.Output.PackageFiles)
                 {
                     context.Log.Debug("Publishing '{file}'");
-                    context.AzurePipelines().Commands.UploadArtifact("", file, context.ArtifactNames.Binaries);
+                    context.AzurePipelines().Commands.UploadArtifact("", file, context.AzurePipelines.ArtifactNames.Binaries);
                 }
             }
         }

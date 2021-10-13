@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Cake.Common;
 using Cake.Common.Tools.DotNetCore;
 using Cake.Common.Tools.DotNetCore.NuGet.Push;
@@ -15,33 +17,32 @@ namespace Build.Tasks
     {
         public override bool ShouldRun(BuildContext context)
         {
-            return context.IsRunningInCI && (context.IsMasterBranch || context.IsReleaseBranch);
+            return context.IsRunningInCI && context.PushTargets.Any(x => x.IsActive(context));
         }
 
         public override void Run(BuildContext context)
         {
-            var packages = context.FileSystem.GetFilePaths(context.PackageOutputPath, "*.nupkg", SearchScope.Current);
-            context.Log.Information($"Found {packages.Count} packages in the package output directory '{context.PackageOutputPath}'");
-
-            ConfigureNuGetCredentials(context);
-
-            //
-            // NuGet push
-            //
-            foreach (var package in packages)
+            var activePushTargets = context.PushTargets.Where(x => x.IsActive(context));
+            foreach (var target in activePushTargets)
             {
-                var pushSettings = new DotNetCoreNuGetPushSettings()
+                switch (target.Type)
                 {
-                    Source = "AzureArtifacts",
-                    ApiKey = "AzureArtifacts"
-                };
+                    case PushTargetType.AzureArtifacts:
+                        PushToAzureArtifacts(context, target);
+                        break;
 
-                context.DotNetCoreNuGetPush(package.FullPath, pushSettings);
+                    case PushTargetType.NuGetOrg:
+                        PushToNuGetOrg(context, target);
+                        break;
+
+                    default:
+                        throw new NotImplementedException($"Unimplemented push target type '{target.Type}'");
+                }
             }
         }
 
 
-        private void ConfigureNuGetCredentials(BuildContext context)
+        private void PushToAzureArtifacts(BuildContext context, PushTarget pushTarget)
         {
             // See https://www.daveaglick.com/posts/pushing-packages-from-azure-pipelines-to-azure-artifacts-using-cake
             var accessToken = context.EnvironmentVariable("SYSTEM_ACCESSTOKEN");
@@ -54,10 +55,45 @@ namespace Build.Tasks
                 "AzureArtifacts",
                 new DotNetCoreNuGetSourceSettings()
                 {
-                    Source = context.CINuGetFeedUrl,
+                    Source = pushTarget.FeedUrl,
                     UserName = "AzureArtifacts",
                     Password = accessToken
                 });
+
+            context.Log.Information($"Pushing packages to Azure Artifacts feed '{pushTarget.FeedUrl}'");
+            foreach (var package in context.Output.PackageFiles)
+            {
+                context.Log.Information($"Pushing package '{package}'");
+                var pushSettings = new DotNetCoreNuGetPushSettings()
+                {
+                    Source = "AzureArtifacts",
+                    ApiKey = "AzureArtifacts"
+                };
+
+                context.DotNetCoreNuGetPush(package.FullPath, pushSettings);
+            }
+        }
+
+        private void PushToNuGetOrg(BuildContext context, PushTarget pushTarget)
+        {
+            var apiKey = context.EnvironmentVariable("NUGET_ORG_APIKEY");
+            if (String.IsNullOrEmpty(apiKey))
+            {
+                throw new InvalidOperationException("Could not determine nuget.org API key. Enviornment variable 'NUGET_ORG_APIKEY' is empty.");
+            }
+
+            context.Log.Information($"Pushing packages to nuget.org (feed {pushTarget.FeedUrl})");
+            foreach (var package in context.Output.PackageFiles)
+            {
+                context.Log.Information($"Pushing package '{package}'");
+                var pushSettings = new DotNetCoreNuGetPushSettings()
+                {
+                    Source = pushTarget.FeedUrl,
+                    ApiKey = apiKey
+                };
+
+                context.DotNetCoreNuGetPush(package.FullPath, pushSettings);
+            }
         }
     }
 }
