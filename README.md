@@ -25,18 +25,6 @@ This way, you can easily use the tools from Cake while still having the tools an
 
 To use the module in a Cake script file, perform the following steps
 
-1. Add the [Azure Artifacts feed](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=PublicCI) to your `nuget.config` (the module is not yet available on NuGet.org):
-
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <configuration>
-        <packageSources>
-        ...
-        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/PublicCI/nuget/v3/index.json" />
-    </packageSources>
-    </configuration>
-    ```
-
 1. Add the preprocessor directive to install the module
 
     ```cs
