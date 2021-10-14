@@ -46,7 +46,7 @@ namespace Build
                 new PushTarget(
                     this,
                     PushTargetType.AzureArtifacts,
-                    "https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/Cake.GitHubReleases/nuget/v3/index.json",
+                    "https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/PublicCI/nuget/v3/index.json",
                     context => context.Git.IsMasterBranch || context.Git.IsReleaseBranch
                 ),
                 new PushTarget(

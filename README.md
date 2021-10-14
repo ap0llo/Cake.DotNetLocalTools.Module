@@ -1,7 +1,7 @@
 # Cake.DotNetLocalTools.Module
 
 [![NuGet](https://img.shields.io/nuget/v/Cake.DotNetLocalTools.Module.svg?logo=nuget)](https://www.nuget.org/packages/Cake.DotNetLocalTools.Module)
-[![Azure Artifacts](https://img.shields.io/badge/Azure%20Artifacts-prerelease-yellow.svg?logo=azuredevops)](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=Cake.DotNetLocalTools.Module)
+[![Azure Artifacts](https://img.shields.io/badge/Azure%20Artifacts-prerelease-yellow.svg?logo=azuredevops)](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=PublicCI)
 
 [![Build Status](https://dev.azure.com/ap0llo/OSS/_apis/build/status/Cake.DotNetLocalTools.Module?branchName=master)](https://dev.azure.com/ap0llo/OSS/_build/latest?definitionId=21&branchName=master)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
@@ -10,9 +10,9 @@ A [Cake](https://cakebuild.net/) Module that extends Cake with functionality to 
 
 ## Overview
 
-Cake allows installing [.NET CLI Tools](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) through the `#tool` preprocessor directies and Cake.Frosting's `InstallTool` method (see [Installing and using tools](https://cakebuild.net/docs/writing-builds/tools/installing-tools) for details)-
+Cake allows installing [.NET CLI Tools](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) through the `#tool` preprocessor directies and Cake.Frosting's `InstallTool` method (see [Installing and using tools](https://cakebuild.net/docs/writing-builds/tools/installing-tools) for details).
 
-.NET Core 3.1 introduced the concept of ["local tools"](https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use). 
+.NET Core 3.1 introduced the concept of ["local tools"](https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use).
 Local tools are listed in a "tool manifest" (`dotnet-tools.json`) and run through the `dotnet` command.
 
 `Cake.DotNetLocalTools.Module` brings these two concepts together. 
@@ -25,14 +25,14 @@ This way, you can easily use the tools from Cake while still having the tools an
 
 To use the module in a Cake script file, perform the following steps
 
-1. Add the [Azure Artifacts feed](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=Cake.DotNetLocalTools.Module) to your `nuget.config` (the module is not yet available on NuGet.org):
+1. Add the [Azure Artifacts feed](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=PublicCI) to your `nuget.config` (the module is not yet available on NuGet.org):
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <configuration>
         <packageSources>
         ...
-        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/Cake.DotNetLocalTools.Module/nuget/v3/index.json" />
+        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/PublicCI/nuget/v3/index.json" />
     </packageSources>
     </configuration>
     ```
@@ -59,7 +59,7 @@ To use the module in a [Cake.Frosting](https://cakebuild.net/docs/running-builds
     <configuration>
     <packageSources>
         ...
-        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/Cake.DotNetLocalTools.Module/nuget/v3/index.json" />
+        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/PublicCI/nuget/v3/index.json" />
     </packageSources>
     </configuration>
     ```
