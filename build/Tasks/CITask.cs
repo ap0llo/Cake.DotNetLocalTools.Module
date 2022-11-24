@@ -8,6 +8,7 @@ namespace Build.Tasks
     [IsDependentOn(typeof(SetBuildNumberTask))]
     [IsDependentOn(typeof(BuildTask))]
     [IsDependentOn(typeof(TestTask))]
+    [IsDependentOn(typeof(ValidateTask))]
     [IsDependentOn(typeof(PackTask))]
     [IsDependentOn(typeof(GenerateChangeLogTask))]
     [IsDependentOn(typeof(PushTask))]

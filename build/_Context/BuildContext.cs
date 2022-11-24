@@ -36,6 +36,8 @@ namespace Build
         /// </summary>
         public FilePath SolutionPath => RootDirectory.CombineWithFilePath("Cake.DotNetLocalTools.Module.sln");
 
+        public virtual CodeFormattingSettings CodeFormattingSettings { get; }
+
 
         public BuildContext(ICakeContext context) : base(context)
         {
@@ -63,6 +65,14 @@ namespace Build
             GitHub = new(this);
             Output = new(this);
             BuildSettings = new(this);
+            CodeFormattingSettings = new(this)
+            {
+                // Exclude the "deps" directory from code formatting (contains submodules for which this project's formatting rules do not apply)
+                ExcludedDirectories = new[]
+                {
+                    RootDirectory.Combine("deps")
+                }
+            };
         }
 
 
@@ -90,6 +100,9 @@ namespace Build
 
             Log.Information($"{prefix(indentWidth)}{nameof(GitHub)}:");
             GitHub.PrintToLog(indentWidth + 2);
+
+            Log.Information($"{prefix(indentWidth)}{nameof(CodeFormattingSettings)}:");
+            CodeFormattingSettings.PrintToLog(indentWidth + 2);
 
             // 
             Log.Information($"{nameof(PushTargets)}:");
