@@ -10,4 +10,5 @@ return new CakeHost()
             // Since this build is building the local tools module, the build cannot use it.
             // Instead install all the required tools individually
             .InstallTool(new Uri("dotnet:?package=Grynwald.ChangeLog&version=1.1.118"))
+            .InstallTool(new Uri("dotnet:?package=dotnet-reportgenerator-globaltool&version=5.1.12"))
             .Run(args);
