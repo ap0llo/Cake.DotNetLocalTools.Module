@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E453CA95-C36A-4BB5-B8B9-D8251468FE03}"
 EndProject
@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "build\Build.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{8C54811F-4DEA-4021-9EDF-BB579129B97C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.GitHub", "deps\Cake.GitHub\src\Cake.GitHub\Cake.GitHub.csproj", "{A90AB52E-04E0-456A-B941-913725BA3B4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,8 @@ Global
 		{CFDD2A3C-6510-4786-A305-1E76704196E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A7C6286-9BE1-4CF8-BBF7-EB4DFAB48B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A7C6286-9BE1-4CF8-BBF7-EB4DFAB48B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90AB52E-04E0-456A-B941-913725BA3B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90AB52E-04E0-456A-B941-913725BA3B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +47,7 @@ Global
 		{7F15995D-F55C-4A4D-87BD-B08B67A99B6A} = {E453CA95-C36A-4BB5-B8B9-D8251468FE03}
 		{CFDD2A3C-6510-4786-A305-1E76704196E9} = {E453CA95-C36A-4BB5-B8B9-D8251468FE03}
 		{6A7C6286-9BE1-4CF8-BBF7-EB4DFAB48B87} = {8C54811F-4DEA-4021-9EDF-BB579129B97C}
+		{A90AB52E-04E0-456A-B941-913725BA3B4C} = {8C54811F-4DEA-4021-9EDF-BB579129B97C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {551F3808-5BE6-4CF4-A80E-489DCCD2C9BF}

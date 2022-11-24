@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cake.Core.Diagnostics;
 using Cake.Frosting;
-using Cake.GitHubReleases;
+using Cake.GitHub;
 using Cake.GitVersioning;
 
 namespace Build.Tasks
@@ -50,7 +50,7 @@ namespace Build.Tasks
 
         private async Task CreateDraftRelease(BuildContext context, string accessToken, string version, string changeLog)
         {
-            var releaseSettings = new GitHubReleaseCreateSettings(context.GitHub.RepositoryOwner, context.GitHub.RepositoryName, "vNext")
+            var releaseSettings = new GitHubCreateReleaseSettings()
             {
                 Draft = true,
                 Prerelease = true,
@@ -58,26 +58,22 @@ namespace Build.Tasks
                 Body = changeLog,
                 Overwrite = true,
                 TargetCommitish = context.Git.CommitId,
-                HostName = context.GitHub.HostName,
-                AccessToken = accessToken
             };
 
-            await context.GitHubReleaseCreateAsync(releaseSettings);
+            await context.GitHubCreateReleaseAsync(null, accessToken, context.GitHub.RepositoryOwner, context.GitHub.RepositoryName, "vNext", releaseSettings);
         }
 
         private async Task CreateRelease(BuildContext context, string accessToken, string version, string changeLog)
         {
-            var releaseSettings = new GitHubReleaseCreateSettings(context.GitHub.RepositoryOwner, context.GitHub.RepositoryName, $"v{version}")
+            var releaseSettings = new GitHubCreateReleaseSettings()
             {
                 Name = $"v{version}",
                 Body = changeLog,
                 TargetCommitish = context.Git.CommitId,
-                AccessToken = accessToken,
-                HostName = context.GitHub.HostName,
                 Assets = context.Output.PackageFiles.ToList()
             };
 
-            await context.GitHubReleaseCreateAsync(releaseSettings);
+            await context.GitHubCreateReleaseAsync(null, accessToken, context.GitHub.RepositoryOwner, context.GitHub.RepositoryName, $"v{version}", releaseSettings);
         }
     }
 }

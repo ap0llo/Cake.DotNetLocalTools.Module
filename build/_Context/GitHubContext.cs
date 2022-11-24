@@ -10,9 +10,7 @@ namespace Build
         private readonly BuildContext m_Context;
         private readonly Lazy<GitHubProjectInfo> m_ProjectInfo;
 
-
-        public string HostName => m_ProjectInfo.Value.Host;
-
+       
         public string RepositoryOwner => m_ProjectInfo.Value.Owner;
 
         public string RepositoryName => m_ProjectInfo.Value.Repository;
@@ -29,7 +27,6 @@ namespace Build
         {
             string prefix = new String(' ', indentWidth);
 
-            m_Context.Log.Information($"{prefix}{nameof(HostName)}: {HostName}");
             m_Context.Log.Information($"{prefix}{nameof(RepositoryOwner)}: {RepositoryOwner}");
             m_Context.Log.Information($"{prefix}{nameof(RepositoryName)}: {RepositoryName}");
         }
