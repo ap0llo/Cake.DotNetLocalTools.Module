@@ -205,7 +205,7 @@ namespace Cake.DotNetLocalTools.Module.Test
 
             temporaryDirectory.AddFile("global.json", @"{
               ""sdk"": {
-                ""version"": ""5.0.400""
+                ""version"": ""7.0.100""
               }
             }");
 

@@ -36,7 +36,7 @@ namespace Build
 
         public DotNetCoreMSBuildSettings GetDefaultMSBuildSettings() => new()
         {
-            TreatAllWarningsAs = MSBuildTreatAllWarningsAs.Error
+            //TreatAllWarningsAs = MSBuildTreatAllWarningsAs.Error,            
         };
 
 
