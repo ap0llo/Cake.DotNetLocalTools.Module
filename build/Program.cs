@@ -9,5 +9,5 @@ return new CakeHost()
             //.UseModule<AzurePipelinesModule>()
             // Since this build is building the local tools module, the build cannot use it.
             // Instead install all the required tools individually
-            .InstallTool(new Uri("dotnet:?package=Grynwald.ChangeLog&version=0.4.135"))
+            .InstallTool(new Uri("dotnet:?package=Grynwald.ChangeLog&version=1.1.118"))
             .Run(args);
