@@ -15,11 +15,13 @@ namespace Build
 
         public string RepositoryName => m_ProjectInfo.Value.Repository;
 
+        public GitHubPullRequestContext PullRequest { get; }
 
         public GitHubContext(BuildContext context)
         {
             m_Context = context ?? throw new ArgumentNullException(nameof(context));
             m_ProjectInfo = new Lazy<GitHubProjectInfo>(() => GitHubUrlParser.ParseRemoteUrl(m_Context.Git.RemoteUrl));
+            PullRequest = new GitHubPullRequestContext(context);
         }
 
 
@@ -29,6 +31,8 @@ namespace Build
 
             m_Context.Log.Information($"{prefix}{nameof(RepositoryOwner)}: {RepositoryOwner}");
             m_Context.Log.Information($"{prefix}{nameof(RepositoryName)}: {RepositoryName}");
+
+            PullRequest.PrintToLog(indentWidth + 2);
         }
 
         public string? TryGetAccessToken()
