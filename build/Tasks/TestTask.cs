@@ -3,8 +3,8 @@ using System.Linq;
 using Cake.Common.Build;
 using Cake.Common.Build.AzurePipelines.Data;
 using Cake.Common.IO;
-using Cake.Common.Tools.DotNetCore;
-using Cake.Common.Tools.DotNetCore.Test;
+using Cake.Common.Tools.DotNet;
+using Cake.Common.Tools.DotNet.Test;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Frosting;
@@ -39,7 +39,7 @@ namespace Build.Tasks
             //
             // Run tests
             //
-            var testSettings = new DotNetCoreTestSettings()
+            var testSettings = new DotNetTestSettings()
             {
                 Configuration = context.BuildSettings.Configuration,
                 NoBuild = true,
@@ -48,7 +48,7 @@ namespace Build.Tasks
                 ResultsDirectory = context.Output.TestResultsDirectory
             };
 
-            context.DotNetCoreTest(context.SolutionPath.FullPath, testSettings);
+            context.DotNetTest(context.SolutionPath.FullPath, testSettings);
 
             //
             // Publish Test Resilts

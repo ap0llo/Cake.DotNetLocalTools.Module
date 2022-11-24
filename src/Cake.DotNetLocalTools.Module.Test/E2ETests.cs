@@ -31,13 +31,13 @@ namespace Cake.DotNetLocalTools.Module.Test
   
                     <PropertyGroup>
                         <OutputType>Exe</OutputType>
-                        <TargetFramework>net5.0</TargetFramework>
+                        <TargetFramework>net7.0</TargetFramework>
                         <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
                         <IsPackable>false</IsPackable>
                     </PropertyGroup>
     
                     <ItemGroup>
-                        <PackageReference Include=""Cake.Frosting"" Version=""1.2.0"" />
+                        <PackageReference Include=""Cake.Frosting"" Version=""3.0.0"" />
                         <Reference Include=""{typeof(LocalToolsModule).Assembly.Location}"" />
                     </ItemGroup>
 
@@ -155,7 +155,7 @@ namespace Cake.DotNetLocalTools.Module.Test
                           ]
                         },
                         ""cake.tool"": {
-                          ""version"": ""1.2.0"",
+                          ""version"": ""3.0.0"",
                           ""commands"": [
                             ""dotnet-cake""
                           ]
@@ -205,7 +205,7 @@ namespace Cake.DotNetLocalTools.Module.Test
 
             temporaryDirectory.AddFile("global.json", @"{
               ""sdk"": {
-                ""version"": ""5.0.400""
+                ""version"": ""7.0.100""
               }
             }");
 

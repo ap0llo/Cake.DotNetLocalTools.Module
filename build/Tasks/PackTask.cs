@@ -1,8 +1,8 @@
 ﻿using Cake.Common.Build;
 using Cake.Common.IO;
-using Cake.Common.Tools.DotNetCore;
-using Cake.Common.Tools.DotNetCore.MSBuild;
-using Cake.Common.Tools.DotNetCore.Pack;
+using Cake.Common.Tools.DotNet;
+using Cake.Common.Tools.DotNet.MSBuild;
+using Cake.Common.Tools.DotNet.Pack;
 using Cake.Core.Diagnostics;
 using Cake.Frosting;
 
@@ -23,7 +23,7 @@ namespace Build.Tasks
             // Pack NuGet packages
             // 
             context.Log.Information("Packing NuGet Packages");
-            var packSettings = new DotNetCorePackSettings()
+            var packSettings = new DotNetPackSettings()
             {
                 Configuration = context.BuildSettings.Configuration,
                 OutputDirectory = context.Output.PackagesDirectory,
@@ -39,7 +39,7 @@ namespace Build.Tasks
                 packSettings.MSBuildSettings.WithProperty("Deterministic", "true");
             }
 
-            context.DotNetCorePack(context.SolutionPath.FullPath, packSettings);
+            context.DotNetPack(context.SolutionPath.FullPath, packSettings);
 
             //
             // Publish Artifacts

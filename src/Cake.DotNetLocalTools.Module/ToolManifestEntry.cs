@@ -40,7 +40,7 @@ namespace Cake.DotNetLocalTools.Module
         public override string ToString() => $"{PackageId}, version {Version}";
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => Equals(obj as ToolManifestEntry);
+        public override bool Equals(object? obj) => Equals(obj as ToolManifestEntry);
 
         /// <inheritdoc />
         public override int GetHashCode()

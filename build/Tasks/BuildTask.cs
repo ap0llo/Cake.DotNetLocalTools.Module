@@ -1,7 +1,7 @@
-﻿using Cake.Common.Tools.DotNetCore;
-using Cake.Common.Tools.DotNetCore.Build;
-using Cake.Common.Tools.DotNetCore.MSBuild;
-using Cake.Common.Tools.DotNetCore.Restore;
+﻿using Cake.Common.Tools.DotNet;
+using Cake.Common.Tools.DotNet.Build;
+using Cake.Common.Tools.DotNet.MSBuild;
+using Cake.Common.Tools.DotNet.Restore;
 using Cake.Core.Diagnostics;
 using Cake.Frosting;
 
@@ -16,7 +16,7 @@ namespace Build.Tasks
             // Restore NuGet Packages
             //
             context.Log.Information("Restoring NuGet Packages");
-            context.DotNetCoreRestore(context.SolutionPath.FullPath, new DotNetCoreRestoreSettings()
+            context.DotNetRestore(context.SolutionPath.FullPath, new DotNetRestoreSettings()
             {
                 MSBuildSettings = context.BuildSettings.GetDefaultMSBuildSettings()
             });
@@ -25,7 +25,7 @@ namespace Build.Tasks
             // Build
             //
             context.Log.Information($"Building {context.SolutionPath}");
-            var buildSettings = new DotNetCoreBuildSettings()
+            var buildSettings = new DotNetBuildSettings()
             {
                 Configuration = context.BuildSettings.Configuration,
                 NoRestore = true,
@@ -39,7 +39,7 @@ namespace Build.Tasks
                 buildSettings.MSBuildSettings.WithProperty("Deterministic", "true");
             }
 
-            context.DotNetCoreBuild(context.SolutionPath.FullPath, buildSettings);
+            context.DotNetBuild(context.SolutionPath.FullPath, buildSettings);
         }
     }
 }
