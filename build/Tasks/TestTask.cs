@@ -28,7 +28,7 @@ namespace Build.Tasks
             // but do not throw in PublishTestResults() when there are not test results
             PublishTestResults(context, failOnMissingTestResults: false);
 
-            base.OnError(exception, context);
+            throw exception;
         }
 
 
