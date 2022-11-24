@@ -38,6 +38,8 @@ namespace Build
 
         public virtual CodeFormattingSettings CodeFormattingSettings { get; }
 
+        public virtual TestSettings TestSettings { get; }
+
 
         public BuildContext(ICakeContext context) : base(context)
         {
@@ -73,6 +75,7 @@ namespace Build
                     RootDirectory.Combine("deps")
                 }
             };
+            TestSettings = new(this);
         }
 
 
@@ -103,6 +106,9 @@ namespace Build
 
             Log.Information($"{prefix(indentWidth)}{nameof(CodeFormattingSettings)}:");
             CodeFormattingSettings.PrintToLog(indentWidth + 2);
+
+            Log.Information($"{prefix(indentWidth)}{nameof(TestSettings)}:");
+            TestSettings.PrintToLog(indentWidth + 2);
 
             // 
             Log.Information($"{nameof(PushTargets)}:");

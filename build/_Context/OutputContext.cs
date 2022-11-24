@@ -34,6 +34,11 @@ namespace Build
 
         public IEnumerable<FilePath> PackageFiles => m_Context.FileSystem.GetFilePaths(PackagesDirectory, "*.nupkg");
 
+        public DirectoryPath CodeCoverageReportDirectory => BinariesDirectory.Combine(m_Context.BuildSettings.Configuration).Combine("CodeCoverage").Combine("Report");
+
+        public DirectoryPath CodeCoverageHistoryDirectory => BinariesDirectory.Combine(m_Context.BuildSettings.Configuration).Combine("CodeCoverage").Combine("History");
+
+
 
         public OutputContext(BuildContext context)
         {
