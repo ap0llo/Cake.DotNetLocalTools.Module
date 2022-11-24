@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/v/Cake.DotNetLocalTools.Module.svg?logo=nuget)](https://www.nuget.org/packages/Cake.DotNetLocalTools.Module)
 [![Azure Artifacts](https://img.shields.io/badge/Azure%20Artifacts-prerelease-yellow.svg?logo=azuredevops)](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=PublicCI)
 
-[![Build Status](https://dev.azure.com/ap0llo/OSS/_apis/build/status/Cake.DotNetLocalTools.Module?branchName=master)](https://dev.azure.com/ap0llo/OSS/_build/latest?definitionId=21&branchName=master)
+[![Build Status](https://dev.azure.com/ap0llo/OSS/_apis/build/status/cake-contrib.Cake.DotNetLocalTools.Module?branchName=master)](https://dev.azure.com/ap0llo/OSS/_build/latest?definitionId=24&branchName=master)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
 
 A [Cake](https://cakebuild.net/) Module that extends Cake with functionality to install tools from a .NET tool manifest.
