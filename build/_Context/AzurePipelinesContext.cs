@@ -48,9 +48,7 @@ namespace Build
 
         public ArtifactNameSettings ArtifactNames { get; }
 
-        public bool IsActive =>
-            m_Context.AzurePipelines().IsRunningOnAzurePipelines ||
-            m_Context.AzurePipelines().IsRunningOnAzurePipelinesHosted;
+        public bool IsActive => m_Context.AzurePipelines().IsRunningOnAzurePipelines;
 
 
         public AzurePipelinesContext(BuildContext context)

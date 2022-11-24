@@ -1,6 +1,6 @@
 ﻿using System;
 using Cake.Common;
-using Cake.Common.Tools.DotNetCore.MSBuild;
+using Cake.Common.Tools.DotNet.MSBuild;
 using Cake.Core.Diagnostics;
 
 namespace Build
@@ -34,7 +34,7 @@ namespace Build
 
 
 
-        public DotNetCoreMSBuildSettings GetDefaultMSBuildSettings() => new()
+        public DotNetMSBuildSettings GetDefaultMSBuildSettings() => new()
         {
             //TreatAllWarningsAs = MSBuildTreatAllWarningsAs.Error,            
         };

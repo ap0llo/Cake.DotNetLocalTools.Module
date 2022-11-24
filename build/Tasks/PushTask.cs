@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cake.Common;
-using Cake.Common.Tools.DotNetCore;
-using Cake.Common.Tools.DotNetCore.NuGet.Push;
-using Cake.Common.Tools.DotNetCore.NuGet.Source;
+using Cake.Common.Tools.DotNet;
+using Cake.Common.Tools.DotNet.NuGet.Push;
+using Cake.Common.Tools.DotNet.NuGet.Source;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Frosting;
@@ -51,9 +51,9 @@ namespace Build.Tasks
                 throw new InvalidOperationException("Could not resolve SYSTEM_ACCESSTOKEN.");
             }
 
-            context.DotNetCoreNuGetAddSource(
+            context.DotNetNuGetAddSource(
                 "AzureArtifacts",
-                new DotNetCoreNuGetSourceSettings()
+                new DotNetNuGetSourceSettings()
                 {
                     Source = pushTarget.FeedUrl,
                     UserName = "AzureArtifacts",
@@ -64,13 +64,13 @@ namespace Build.Tasks
             foreach (var package in context.Output.PackageFiles)
             {
                 context.Log.Information($"Pushing package '{package}'");
-                var pushSettings = new DotNetCoreNuGetPushSettings()
+                var pushSettings = new DotNetNuGetPushSettings()
                 {
                     Source = "AzureArtifacts",
                     ApiKey = "AzureArtifacts"
                 };
 
-                context.DotNetCoreNuGetPush(package.FullPath, pushSettings);
+                context.DotNetNuGetPush(package.FullPath, pushSettings);
             }
         }
 
@@ -86,13 +86,13 @@ namespace Build.Tasks
             foreach (var package in context.Output.PackageFiles)
             {
                 context.Log.Information($"Pushing package '{package}'");
-                var pushSettings = new DotNetCoreNuGetPushSettings()
+                var pushSettings = new DotNetNuGetPushSettings()
                 {
                     Source = pushTarget.FeedUrl,
                     ApiKey = apiKey
                 };
 
-                context.DotNetCoreNuGetPush(package.FullPath, pushSettings);
+                context.DotNetNuGetPush(package.FullPath, pushSettings);
             }
         }
     }
