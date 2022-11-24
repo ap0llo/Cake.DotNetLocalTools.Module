@@ -8,6 +8,10 @@
 
 A [Cake](https://cakebuild.net/) Module that extends Cake with functionality to install tools from a .NET tool manifest.
 
+
+The major version and target framework of the package tracks the version of Cake it was built for.
+Currently, version `3.*` of `Cake.DotNetLocalTools.Module` is built for Cake 3.0 and support .NET 6 and .NET 7.
+
 ## Overview
 
 Cake allows installing [.NET CLI Tools](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) through the `#tool` preprocessor directies and Cake.Frosting's `InstallTool` method (see [Installing and using tools](https://cakebuild.net/docs/writing-builds/tools/installing-tools) for details).
@@ -16,7 +20,7 @@ Cake allows installing [.NET CLI Tools](https://docs.microsoft.com/en-us/dotnet/
 Local tools are listed in a "tool manifest" (`dotnet-tools.json`) and run through the `dotnet` command.
 
 `Cake.DotNetLocalTools.Module` brings these two concepts together. 
-It reads a list of tools from one or more tool manifests and install's them through Cake's tool infrastructure.
+It reads a list of tools from one or more tool manifests and installs them through Cake's tool infrastructure.
 This way, you can easily use the tools from Cake while still having the tools and their versions described in a common format.
 
 ## Usage
@@ -40,17 +44,6 @@ To use the module in a Cake script file, perform the following steps
 ### Cake.Frosting
 
 To use the module in a [Cake.Frosting](https://cakebuild.net/docs/running-builds/runners/cake-frosting) project, perform the following steps.
-
-1. Add the [Azure Artifacts feed](https://dev.azure.com/ap0llo/OSS/_packaging?_a=feed&feed=Cake.DotNetLocalTools.Module) to your `nuget.config` (the module is not yet available on NuGet.org):
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <configuration>
-    <packageSources>
-        ...
-        <add key="Cake.DotNetLocalTools.Module" value="https://pkgs.dev.azure.com/ap0llo/OSS/_packaging/PublicCI/nuget/v3/index.json" />
-    </packageSources>
-    </configuration>
-    ```
 
 1. Install the module package by adding a package reference to your project
 
@@ -144,7 +137,7 @@ This is equivalent to installing each tool individually:
 
 ## Building from source
 
-Building the project from source requires the .NET 5 SDK (version 5.0.400 as specified in [global.json](./global.json)).
+Building the project from source requires the .NET 7 SDK (version 7.0.100 as specified in [global.json](./global.json)).
 
 To build the project, run 
 
