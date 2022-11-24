@@ -1,0 +1,3 @@
+[submodule "deps/Cake.GitHub"]
+	path = deps/Cake.GitHub
+	url = https://github.com/cake-contrib/Cake.GitHub.git

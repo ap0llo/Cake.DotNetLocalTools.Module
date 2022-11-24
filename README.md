@@ -28,7 +28,7 @@ This way, you can easily use the tools from Cake while still having the tools an
 ### Cake Script
 
 To use the module in a Cake script file, perform the following steps
-
+d
 1. Add the preprocessor directive to install the module
 
     ```cs
@@ -136,6 +136,9 @@ This is equivalent to installing each tool individually:
 
 
 ## Building from source
+
+
+**Note:** This repository uses git submodules, so please use `git clone --recursive` to also clone the submodules.
 
 Building the project from source requires the .NET 7 SDK (version 7.0.100 as specified in [global.json](./global.json)).
 

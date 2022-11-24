@@ -14,6 +14,8 @@ jobs:
   steps:
   - checkout: self
     fetchDepth: 0
+    submodules: recursive
+    displayName: Checkout
   - task: PowerShell@2
     displayName: Cake Build
     inputs:
