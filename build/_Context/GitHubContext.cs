@@ -10,7 +10,7 @@ namespace Build
         private readonly BuildContext m_Context;
         private readonly Lazy<GitHubProjectInfo> m_ProjectInfo;
 
-       
+
         public string RepositoryOwner => m_ProjectInfo.Value.Owner;
 
         public string RepositoryName => m_ProjectInfo.Value.Repository;
